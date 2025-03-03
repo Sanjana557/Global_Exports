@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handicraft Products</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: whitesmoke;
+        }
+        .content {
+            padding: 20px;
+            max-width: 100px;
+            margin: auto;
+        }
+        .content h1 {
+            font-size: 28px;
+            color: #333;
+        }
+        .content p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .section-container {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff;
+            height: 2000px;
+
+        }
+        .section-container h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+
+        
+
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 20px;
+            background-color: white;
+        }
+
+        .product-section {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px; /* Set a consistent height */
+            
+        }
+        .product-card h3 {
+            font-size: 16px;
+            color: #333;
+            padding: 10px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevents content overflow */
+
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+
+
+
+        /* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: black;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+    
+}
+
+.nav-links li a:hover{
+    color: #f97316;
+}
+
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Align below */
+    left: 0;
+    background-color: black;
+    list-style: none;
+    padding: 10px 0;
+    display: none; /* Hidden initially */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1000;
+    font-size: 10px;
+}
+
+.dropdown-menu li {
+    padding: 5px 20px;
+}
+
+.dropdown-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+    color: #f97316;
+    border-radius: 5px;
+}
+
+
+
+/* Submenu Styling */
+.dropdown-submenu {
+    position: relative;
+}
+
+.submenu {
+    position: absolute;
+    top: 0;
+    left: 100%; /* Align to the right of parent */
+    background-color:black;
+    list-style: none;
+    padding: 10px 0;
+    display: none; /* Hidden initially */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.submenu li {
+    padding: 5px 20px;
+}
+
+.submenu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.submenu li a:hover {
+    background-color: #f97316;
+    border-radius: 5px;
+}
+
+/* Hover Effect */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu:hover .submenu {
+    display: block;
+}
+
+/* Dropdown Icon Styling */
+.dropdown-icon {
+    font-size: 12px;
+    margin-left: 5px;
+    color: #fff;
+}
+
+
+
+
+
+
+   
+
+@media (max-width: 768px) {
+
+
+    .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+
+        .product-section h2 {
+            font-size: 30px;
+            color:black;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+
+       /* Footer styles */
+       footer {
+            background-color: black; /* Dark gray background */
+            color: #fff; /* White text */
+            padding: 2rem 0;
+        }
+  
+    .containers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+
+  .top-bar {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-size: 13px;
+}
+
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight:100;
+    font-size: 13px;
+}
+
+
+.logo img {
+    width: 100px;
+}
+  
+  /* Logo section */
+    .footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding:2rem;
+  }
+
+
+
+
+  .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .product-card img {
+            width: 100%;
+            height: 300px; /* Set a consistent height */
+            
+        }
+        .product-card h3 {
+            font-size: 16px;
+            color: #333;
+            padding: 10px;
+        }
+
+
+
+
+
+  
+  .footer-logo .logo {
+    height: 150px; /* Adjust logo height */
+    width: auto; /* Maintain aspect ratio */
+    margin-bottom: 1rem;
+    padding:2rem;
+  }
+  
+  /* Quick Links, Products, Contact sections */
+  footer h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  footer ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  footer ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  footer ul li a:hover {
+    color: #f97316; /* Orange hover effect */
+  }
+
+  .contact {
+    padding:2rem;
+  }
+  
+}
+
+@media (min-width: 1045px) {
+
+
+    .product-grid{
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+
+            .product-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+            width: 1200px;
+            height: 2000px;
+            margin: 40px auto;
+        }
+
+        .product-section h3 {
+            font-size: 40px;
+            color:black;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+
+        .top-bar {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 0px;
+    font-size: 25px;
+}
+.fas{
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+.top-bar h2{
+    padding-top: 10px;
+}
+
+.logo img {
+    width: 100px;
+    height: 70px;
+        padding-left: 20px;
+
+    }
+
+         /* Footer styles */
+footer {
+    background-color: black; /* Dark gray background */
+    color: #fff; /* White text */
+    padding: 2px 0;
+    text-align: center;
+    font-size: 14px;  /* Reduce the font size */
+    line-height: 1.0; /* Adjust line spacing */
+  }
+  
+  .containers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  /* Logo section */
+  .footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 25px;
+  }
+  
+  .footer-logo .logo {
+    height: 150px; /* Adjust logo height */
+    width: auto; /* Maintain aspect ratio */
+    padding:3rem;
+  }
+  .footer-logo p{
+        font-size: 20px;
+        padding-bottom: 0px;
+  }
+  /* Quick Links, Products, Contact sections */
+  footer h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  footer ul {
+    list-style: none;
+    padding: 0;
+    font-size: 15px;
+  }
+  
+  footer ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  footer ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  footer ul li a:hover {
+    color: #f97316; /* Orange hover effect */
+  }
+  .contact {
+    padding-top: opx;
+}
+
+
+    
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            height: 350px;
+            width: 350px;
+        }
+        .product-card img {
+            width: 100%;
+            height: 350px; /* Set a consistent height */
+            
+        }
+        .product-card h3 {
+            font-size: 16px;
+            color: #333;
+            padding: 10px;
+        }
+
+
+
+
+
+  
+  
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <H2>YCR GLOBAL EXPORTS</H2>
+            <span><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka, India</span> <br>
+            <span><i class="fas fa-envelope"></i> ycrglobalexports@gmail.com</span>
+        </div>
+        <nav>
+            <div class="logo">
+                <img src="logo1.jpg" alt="Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                        <a href="#">Products <span class="dropdown-icon">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu">
+                                <a href="Areca_plates.html">Areca Leaf Plates <span class="dropdown-icon"></span></a>
+                            </li>
+                            <li><a href="#">Sugarcane Bagasse Plates</a></li>
+                            <li><a href="Handicrafts.html">Handicraft Products</a></li>
+                            <li><a href="#">Poly Bags</a></li>
+                            <li><a href="#">Bamboo Products</a></li>
+                            <li><a href="cocnut_products.html">Coconut Products</a></li>
+                            <li><a href="#">Pet Sheets</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+    </header>
+
+
+
+    <div class="product-section">
+        <h3>HandiCraft Products</h3>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="handy/IMG-20250203-WA0025.jpg" alt="Wooden Jewelry Box" onclick="openModal(this)">
+                
+            </div>
+            <div class="product-card">
+                <img src="handy/IMG-20250203-WA0026.jpg" alt="Wooden Gift Items" onclick="openModal(this)">
+                
+            </div>
+            <div class="product-card">
+                <img src="handy/IMG-20250203-WA0027.jpg" alt="Wooden Crafts" onclick="openModal(this)">
+                
+            </div>
+            <div class="product-card">
+                <img src="handy/IMG-20250203-WA0028.jpg" alt="Cane Crafts" onclick="openModal(this)">
+            </div>
+
+            <div class="product-card">
+                <img src="handy/IMG-20250203-WA0029.jpg" alt="Cane Crafts" onclick="openModal(this)">
+            </div>
+
+            <div class="product-card">
+                <img src="handy/IMG-20250203-WA0030.jpg" alt="Cane Crafts" onclick="openModal(this)">
+            </div>
+
+            <div class="product-card">
+                <img src="handy/IMG-20250203-WA0031.jpg" alt="Cane Crafts" onclick="openModal(this)">
+            </div>
+
+            <div class="product-card">
+                <img src="handy/IMG-20250203-WA0032.jpg" alt="Cane Crafts" onclick="openModal(this)">
+            </div>
+
+            <div class="product-card">
+                <img src="handy/IMG-20250203-WA0033.jpg" alt="Cane Crafts" onclick="openModal(this)">
+            </div>
+
+            <div class="product-card">
+                <img src="handy/IMG-20250203-WA0034.jpg" alt="Cane Crafts" onclick="openModal(this)">
+            </div>
+
+            
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+        <span class="close" onclick="closeModal()">×</span>
+        <img id="modalImage" src="" alt="Enlarged Image">
+    </div>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="containers mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+          <!-- Logo and Copyright -->
+          <div class="footer-logo">
+            <img src="logo1.jpg" alt="OES Logo" class="logo">
+            <p>© Copyrights 2025 All Rights Reserved YCR Global Export Pvt Ltd</p>
+          </div>
+      
+          <!-- Quick Links -->
+          <div>
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+      
+          <!-- Products -->
+          <div>
+            <h4>Products</h4>
+            <ul>
+              <li><a href="Areca_plates.html">Areca Leaf Plates</a></li>
+              <li><a href="">Sugarcane Bagasse Plates</a></li>
+              <li><a href="Handicrafts.html">HandiCraft Products</a></li>
+              <li><a href="#">Poly Bags</a></li>
+              <li><a href="#">Bamboo Products</a></li>
+              <li><a href="cocnut_products.html">Coconut Products</a></li>
+              <li><a href="#">Pet Sheets</a></li>
+            </ul>
+          </div>
+      
+          <!-- Contact Us -->
+          <div class="contact">
+            <h4>Contact Us</h4>
+            <ul>
+              <li>Email: ycrglobalexports@gmail.com</li>
+              <li>Location: Bangalore, Karnataka, India</li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+
+    <script>
+        // Open the modal and display the clicked image
+        function openModal(image) {
+            const modal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImage.src = image.src;
+        }
+
+        // Close the modal
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
